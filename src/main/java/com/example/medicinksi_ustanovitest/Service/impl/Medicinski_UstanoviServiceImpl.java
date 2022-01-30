@@ -33,12 +33,12 @@ public class Medicinski_UstanoviServiceImpl implements Medicinski_UstanoviServic
     }
 
     @Override
-    public Integer all() {
+    public Integer countAllMedicalLabs() {
         return medicinski_ustanoviRepository.countAll();
     }
 
     @Override
-    public Integer covid() {
+    public Integer countAllCovidLabs() {
         return medicinski_ustanoviRepository.countcovid19();
     }
 
@@ -136,6 +136,16 @@ public class Medicinski_UstanoviServiceImpl implements Medicinski_UstanoviServic
         HashMap<Integer, Medicinska_Ustanova> hashMap = new HashMap<>();
         getMedicalLabsByFilter(category, city, covid19Test).forEach(i -> hashMap.put(i.getMedicinska_ustanova_ID(), i));
         return hashMap;
+    }
+
+    @Override
+    public String extractLatitudeFromAddress(String address) {
+       return address.split("lat:")[1].split(",")[0].trim();
+    }
+
+    @Override
+    public String extractLongitudeFromAddress(String address) {
+        return address.split("lng:")[1].trim();
     }
 
 }

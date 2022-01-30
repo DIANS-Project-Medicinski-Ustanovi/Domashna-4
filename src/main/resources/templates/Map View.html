@@ -158,7 +158,7 @@
                 <span> град: </span> <span style="display: inline-block; font-weight: bold; font-size: 19px" th:text="${city} ?: 'СИТЕ'"></span>   <!-- Raboti odlicno -->
                 <span>, категорија: </span> <span style="display: inline-block;font-weight: bold; font-size: 19px" th:text="${category} ?: 'СИТЕ'"></span> <!-- Raboti odlicno -->
                 <span>, ковид-19 тестирање: </span> <span style="display: inline-block;font-weight: bold; font-size: 19px" th:text="${covidTest} ?: 'СИТЕ'"></span> <!-- Raboti odlicno -->
-                <span>, пронајдени: </span> <span style="display: inline-block;font-weight: bold; font-size: 19px" th:text="${sizeList} ?: '202'"></span> <!-- Raboti odlicno -->
+                <span>, пронајдени: </span> <span style="display: inline-block;font-weight: bold; font-size: 19px" th:text="${countMedicalLabs} ?: '202'"></span> <!-- Raboti odlicno -->
 
                 <button id="geoLocation" class="button" style="float: right; margin-top: -26px" >
                     Прикажи најблиски медицински установи
@@ -174,19 +174,19 @@
 
 
                 <!--                Data for map loaction - marker -->
-                <ul style="display: none" th:each="med:${medicinski}">
+                <ul style="display: none" th:each="med:${filteredMedicalLabs}">
                    <li  class="test" th:text="${med.getValue().getLongitude()}"></li>
                 </ul>
-                <ul style="display: none"  th:each="med:${medicinski}">
+                <ul style="display: none"  th:each="med:${filteredMedicalLabs}">
                     <li class="test_lat" th:text="${med.getValue().getLatitude()}"></li> <!-- dobro raboti !!! -->
                 </ul>
-                <ul style="display: none"  th:each="med:${medicinski}">
+                <ul style="display: none"  th:each="med:${filteredMedicalLabs}">
                     <li class="ime" th:text="${med.getValue().getNaziv()}"></li>
                 </ul>
-                <ul style="display: none"  th:each="med:${medicinski}">
+                <ul style="display: none"  th:each="med:${filteredMedicalLabs}">
                     <li class="kat" th:text="${med.getValue().getKategorija()}"></li>
                 </ul>
-                <ul style="display: none"  th:each="med:${medicinski}">
+                <ul style="display: none"  th:each="med:${filteredMedicalLabs}">
                     <li class="Med-id" th:text="${med.getValue().getMedicinska_ustanova_ID()}"></li>
                 </ul>
                 <!--                Data for map loaction - marker END-->

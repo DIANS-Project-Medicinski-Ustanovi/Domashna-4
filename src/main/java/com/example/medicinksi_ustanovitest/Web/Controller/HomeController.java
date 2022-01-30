@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(name = "Home controller", value = {"/home", ""})
 public class HomeController  {
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
@@ -16,12 +15,11 @@ public class HomeController  {
         this.medicinski_ustanoviService = medicinski_ustanoviService;
     }
 
-    @GetMapping
+    @GetMapping({"/home", ""})
     public String getHomePage(Model model){
-        model.addAttribute("countAll", medicinski_ustanoviService.all());
-        model.addAttribute("countCovid", medicinski_ustanoviService.covid());
+        model.addAttribute("countAllMedicalLabs", medicinski_ustanoviService.countAllMedicalLabs());
+        model.addAttribute("countAllCovidLabs", medicinski_ustanoviService.countAllCovidLabs());
         model.addAttribute("bodyContent", "Home");
         return "master-template";
     }
-
 }

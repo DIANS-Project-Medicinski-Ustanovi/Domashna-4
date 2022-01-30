@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(name = "Covid 19 Record Controller",value = "/covid19TestingLab")
 public class Covid19RecordController {
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
@@ -16,9 +15,9 @@ public class Covid19RecordController {
         this.medicinski_ustanoviService = medicinski_ustanoviService;
     }
 
-    @GetMapping
+    @GetMapping("/covid19TestingLab")
     public String getCovid19TestingLabPage(Model model){
-        model.addAttribute("Covid19TestingUstanovi", medicinski_ustanoviService.findAllCovid19TestingLabs());
+        model.addAttribute("Covid19TestingLabs", medicinski_ustanoviService.findAllCovid19TestingLabs());
         model.addAttribute("bodyContent", "Covid-19 Records");
         return "master-template";
     }

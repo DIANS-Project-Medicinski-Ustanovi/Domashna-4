@@ -30,23 +30,21 @@ public class DetailedViewController  {
     @PostMapping("/{id}")
     public String postDetailedView(Model model, @PathVariable int id,
                                    HttpServletRequest req) {
-        String adresa = req.getParameter("adresa");   //vnesen input adresa od korisnik
-        req.setAttribute("adresa", adresa);
-        model.addAttribute("adresa", req.getAttribute("adresa"));
 
+        req.setAttribute("adresa", req.getParameter("adresa"));  //vnesen input adresa od korisnik
         String izbranaAdresa = req.getParameter("izbranaAdresa"); // izbrana adresa vo select
         req.setAttribute("izbranaAdresa", izbranaAdresa);
-        model.addAttribute("izbranaAdresa", req.getAttribute("izbranaAdresa"));
 
         if(izbranaAdresa!=null) {
-            String lat_adresa = izbranaAdresa.split("lat:")[1].split(",")[0].trim();
-            String lng_adresa = izbranaAdresa.split("lng:")[1].trim();
-            model.addAttribute("user_lat", lat_adresa);
-            model.addAttribute("user_lng", lng_adresa);
+            model.addAttribute("user_lat", this.medicinski_ustanoviService.extractLatitudeFromAddress(izbranaAdresa));
+            model.addAttribute("user_lng", this.medicinski_ustanoviService.extractLongitudeFromAddress(izbranaAdresa));
         }
 
+        model.addAttribute("adresa", req.getAttribute("adresa"));
+        model.addAttribute("izbranaAdresa", req.getAttribute("izbranaAdresa"));
         model.addAttribute("DetailedViewLab", medicinski_ustanoviService.findById(id));
         model.addAttribute("bodyContent", "Detailed View LAB");
+
         return "master-template";
     }
 

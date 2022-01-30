@@ -50,7 +50,7 @@
                                 </thead>
                                 <tbody>
 
-                                <tr th:each="ustanova: ${Covid19TestingUstanovi}" id="body_rows">
+                                <tr th:each="ustanova: ${Covid19TestingLabs}" id="body_rows">
                                     <th style="text-align: center">
                                         <a th:href="@{'/{id}' (id=${ustanova.getMedicinska_ustanova_ID()})}" role="button" style="color: cornflowerblue; text-align: center; text-decoration: none">
                                                     <span th:text="${ustanova.getNaziv()}" style="text-align: center; width: 250px; font-weight: bold">

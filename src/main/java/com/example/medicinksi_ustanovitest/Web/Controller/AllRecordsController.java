@@ -17,7 +17,7 @@ public class AllRecordsController {
 
     @GetMapping("/MedicalLAB")
     public String getAllMedicalLabPage(Model model){
-        model.addAttribute("Ustanovi", medicinski_ustanoviService.findAllMedicinskiUstanovi());
+        model.addAttribute("allMedicalLabs", medicinski_ustanoviService.findAllMedicinskiUstanovi());
         model.addAttribute("bodyContent", "All Records");
         return "master-template";
     }

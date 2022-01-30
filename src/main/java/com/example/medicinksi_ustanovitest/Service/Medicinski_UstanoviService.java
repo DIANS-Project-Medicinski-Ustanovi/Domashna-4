@@ -14,9 +14,9 @@ public interface Medicinski_UstanoviService {
 
     public Optional<Medicinska_Ustanova> findById(int id);
 
-    public Integer all();
+    public Integer countAllMedicalLabs();
 
-    public Integer covid();
+    public Integer countAllCovidLabs();
 
     List<Medicinska_Ustanova> findAllByCategory(String category);
 
@@ -31,5 +31,9 @@ public interface Medicinski_UstanoviService {
     List<String> getAllCategories();
 
     public HashMap<Integer, Medicinska_Ustanova> FilterdMedUstanovi(String category, String city, String covid19Test);
+
+    String extractLatitudeFromAddress(String address);
+
+    String extractLongitudeFromAddress(String address);
 
 }

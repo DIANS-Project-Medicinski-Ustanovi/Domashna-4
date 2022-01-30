@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-@RequestMapping(name = "Map View", value = "/map")
 public class MapController{
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
@@ -18,18 +17,18 @@ public class MapController{
         this.medicinski_ustanoviService = medicinski_ustanoviService;
     }
 
-    @GetMapping
+    @GetMapping("/map")
     public String getMapPage(Model model) {
 
         model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
         model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
-        model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(null,null,null));
+        model.addAttribute("filteredMedicalLabs", medicinski_ustanoviService.FilterdMedUstanovi(null,null,null));
         model.addAttribute("bodyContent", "Map View");
         return "master-template";
 
     }
 
-    @PostMapping
+    @PostMapping("/map")
     public String postMapPage(Model model, HttpServletRequest req) {
 
         String category = req.getParameter("category");
@@ -38,10 +37,10 @@ public class MapController{
         req.setAttribute("category", category);
         req.setAttribute("city", city);
         req.setAttribute("covidTest", covidTest);
-        req.setAttribute("sizeList", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest).size());
+        req.setAttribute("countMedicalLabs", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest).size());
         model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
         model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
-        model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest));
+        model.addAttribute("filteredMedicalLabs", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest));
         model.addAttribute("bodyContent", "Map View");
         return "master-template";
     }
