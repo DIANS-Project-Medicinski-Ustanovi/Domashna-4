@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-@RequestMapping(name = "DetailedView", value = "/MedicalLAB/{id}")
-public class DetailedViewController extends ModelAddingAndSettingAttributes {
+public class DetailedViewController  {
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
     public DetailedViewController(Medicinski_UstanoviService medicinski_ustanoviService) {
@@ -22,37 +21,33 @@ public class DetailedViewController extends ModelAddingAndSettingAttributes {
     }
 
 
-    @GetMapping
+    @GetMapping("/{id}")
     public String getDetailedView(Model model, @PathVariable int id) {
-        addingAttribute(model,"DetailedViewLab", medicinski_ustanoviService.findById(id));
+        model.addAttribute("DetailedViewLab", medicinski_ustanoviService.findById(id));
         return "Detailed View LAB";
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public String postDetailedView(Model model, @PathVariable int id,
                                    HttpServletRequest req) {
+        String adresa = req.getParameter("adresa");   //vnesen input adresa od korisnik
+        req.setAttribute("adresa", adresa);
+        model.addAttribute("adresa", req.getAttribute("adresa"));
 
-        String adresa = getAdress(req, "adresa");
-        settingAttribute(req, adresa, "adresa");
-        addingAttribute(model, "adresa", req.getAttribute("adresa"));
-
-        String izbranaAdresa = getAdress(req, "izbranaAdresa");
-        settingAttribute(req, izbranaAdresa, "izbranaAdresa");
-        addingAttribute(model, "izbranaAdresa", req.getAttribute("izbranaAdresa"));
+        String izbranaAdresa = req.getParameter("izbranaAdresa"); // izbrana adresa vo select
+        req.setAttribute("izbranaAdresa", izbranaAdresa);
+        model.addAttribute("izbranaAdresa", req.getAttribute("izbranaAdresa"));
 
         if(izbranaAdresa!=null) {
             String lat_adresa = izbranaAdresa.split("lat:")[1].split(",")[0].trim();
             String lng_adresa = izbranaAdresa.split("lng:")[1].trim();
-            addingAttribute(model, "user_lat", lat_adresa);
-            addingAttribute(model, "user_lng", lng_adresa);
+            model.addAttribute("user_lat", lat_adresa);
+            model.addAttribute("user_lng", lng_adresa);
         }
 
-        addingAttribute(model,"DetailedViewLab",medicinski_ustanoviService.findById(id));
-        return "Detailed View LAB";
-    }
+        model.addAttribute("DetailedViewLab", medicinski_ustanoviService.findById(id));
 
-    private String getAdress(HttpServletRequest req, String adress) {
-        return req.getParameter(adress);
+        return "Detailed View LAB";
     }
 
 }

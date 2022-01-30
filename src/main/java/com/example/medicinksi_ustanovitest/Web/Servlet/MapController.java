@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping(name = "Map View", value = "/map")
-public class MapController extends ModelAddingAndSettingAttributes {
+public class MapController{
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
     public MapController(Medicinski_UstanoviService medicinski_ustanoviService) {
@@ -21,10 +21,11 @@ public class MapController extends ModelAddingAndSettingAttributes {
     @GetMapping
     public String getMapPage(Model model) {
 
-        addingAttribute(model,"allCities", medicinski_ustanoviService.getAllCities());
-        addingAttribute(model,"allCategories", medicinski_ustanoviService.getAllCategories());
-        addingAttribute(model,"medicinski", medicinski_ustanoviService.FilterdMedUstanovi(null,null,null));
+        model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
+        model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
+        model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(null,null,null));
         return "Map View";
+
     }
 
     @PostMapping
@@ -33,13 +34,13 @@ public class MapController extends ModelAddingAndSettingAttributes {
         String category = req.getParameter("category");
         String city = req.getParameter("city");
         String covidTest = req.getParameter("covidTest");
-        settingAttribute(req,"category", category);
-        settingAttribute(req,"city", city);
-        settingAttribute(req,"covidTest", covidTest);
+        req.setAttribute("category", category);
+        req.setAttribute("city", city);
+        req.setAttribute("covidTest", covidTest);
         req.setAttribute("sizeList", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest).size());
-        addingAttribute(model,"allCities", medicinski_ustanoviService.getAllCities());
-        addingAttribute(model,"allCategories", medicinski_ustanoviService.getAllCategories());
-        addingAttribute(model,"medicinski", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest));
+        model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
+        model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
+        model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest));
 
         return "Map View";
     }

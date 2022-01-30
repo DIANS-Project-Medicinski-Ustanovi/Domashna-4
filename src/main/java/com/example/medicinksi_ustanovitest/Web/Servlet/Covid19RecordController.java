@@ -19,6 +19,7 @@ public class Covid19RecordController {
     @GetMapping
     public String getCovid19TestingLabPage(Model model){
         model.addAttribute("Covid19TestingUstanovi", medicinski_ustanoviService.findAllCovid19TestingLabs());
-        return "Covid-19 Records";
+        model.addAttribute("bodyContent", "Covid-19 Records");
+        return "master-template";
     }
 }

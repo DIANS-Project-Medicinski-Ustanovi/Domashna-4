@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(name = "Home controller", value = {"/home", ""})
-public class HomeController extends ModelAddingAndSettingAttributes {
+public class HomeController  {
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
     public HomeController(Medicinski_UstanoviService medicinski_ustanoviService) {
@@ -18,9 +18,10 @@ public class HomeController extends ModelAddingAndSettingAttributes {
 
     @GetMapping
     public String getHomePage(Model model){
-        addingAttribute(model,"countAll", medicinski_ustanoviService.all());
-        addingAttribute(model,"countCovid", medicinski_ustanoviService.covid());
-        return "Home";
+        model.addAttribute("countAll", medicinski_ustanoviService.all());
+        model.addAttribute("countCovid", medicinski_ustanoviService.covid());
+        model.addAttribute("bodyContent", "Home");
+        return "master-template";
     }
 
 }

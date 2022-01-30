@@ -149,89 +149,8 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-
-        <!-- Sidebar - Brand - NAME -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
-            <div class="sidebar-brand-icon">
-                <img src="img/pulse-white.svg" height="40"
-                     width="40"/>
-            </div>
-            <div class="sidebar-brand-text mx-3">Go - LAB</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0">
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="/home">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Home</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading for MAP -->
-        <div class="sidebar-heading">
-            Find your Medical LAB
-        </div>
-
-        <!-- ITEMS for map-->
-        <li class="nav-item active">
-            <a class="nav-link" href="/map">
-                <i class="fas fa-fw icon text-white-50 fas fa-flag"></i>
-                <span>Map</span></a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Tables
-        </div>
-
-        <!-- Table -->
-
-        <li class="nav-item">
-            <a class="nav-link" href="/MedicalLAB">
-                <i class="fas fa-fw fa-table"></i>
-                <span>All Medical Centers</span></a>
-        </li>
-
-
-        <li class="nav-item">
-            <a class="nav-link" href="/covid19TestingLab">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Covid - 19 Testing Centers</span></a>
-        </li>
-
-
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-        <div class="sidebar-heading">
-            Contact
-        </div>
-
-        <li class="nav-item">
-            <a class="nav-link" href="/aboutUs">
-                <i class="fas fa-fw fa-info-circle icon text-white-50"></i>
-                <span>About Us</span></a>
-        </li>
-
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+    <section th:replace="fragments/SideBar.html"></section> <!-- Sidebar -->
 
 
     <!-- Content Wrapper -->
@@ -240,42 +159,7 @@
         <!-- Main Content -->
         <div id="content">
 
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars"></i>
-                </button>
-
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
-
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-
-                    </li>
-
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                            <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
-                        </a>
-
-                    </li>
-
-                </ul>
-
-            </nav>
-            <!-- End of Topbar -->
+            <section th:replace="fragments/Topbar.html"></section> <!-- Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid" style="height: 1000px">
@@ -367,16 +251,7 @@
 
         </div>
         <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Go - LAB 2021</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+        <section th:replace="fragments/Footer.html"></section> <!-- Footer -->
 
     </div>
     <!-- End of Content Wrapper -->
@@ -404,7 +279,7 @@
 <script>
 
     const map = L.map('map', {
-        gestureHandling: true
+        gestureHandling: true // use ctrl+scroll to zoom on map
     }).setView([41.606510, 21.221958], 9);
 
     // razlicni izgledi na mapata
@@ -450,7 +325,7 @@
         const temp_kat = kat.split(',');
 
         for (var i = 1; i < temp_long.length; i++) {
-            var link_detailedView = "https://go-lab.herokuapp.com/MedicalLAB/" + temp_med_id[i];
+            var link_detailedView = "https://go-lab.herokuapp.com/" + temp_med_id[i];
             marker = L.marker([temp_lat[i], temp_long[i]]).addTo(map)
                 .bindPopup('<span style="text-align: center">' + '<hr>' +
                     '<h5> <b style="color: #3b5998">Име:</b> ' + temp_naziv[i] + '</h5>' +

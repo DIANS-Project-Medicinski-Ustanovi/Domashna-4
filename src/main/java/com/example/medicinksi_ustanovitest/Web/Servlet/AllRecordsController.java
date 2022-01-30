@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(name = "All Records Controller",value = "/MedicalLAB")
+
 public class AllRecordsController {
     private final Medicinski_UstanoviService medicinski_ustanoviService;
 
@@ -16,9 +16,10 @@ public class AllRecordsController {
         this.medicinski_ustanoviService = medicinski_ustanoviService;
     }
 
-    @GetMapping
+    @GetMapping("/MedicalLAB")
     public String getAllMedicalLabPage(Model model){
         model.addAttribute("Ustanovi", medicinski_ustanoviService.findAllMedicinskiUstanovi());
-        return "All Records";
+        model.addAttribute("bodyContent", "All Records");
+        return "master-template";
     }
 }
