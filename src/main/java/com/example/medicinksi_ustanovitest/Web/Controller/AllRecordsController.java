@@ -1,11 +1,10 @@
-package com.example.medicinksi_ustanovitest.Web.Servlet;
+package com.example.medicinksi_ustanovitest.Web.Controller;
 
 
 import com.example.medicinksi_ustanovitest.Service.Medicinski_UstanoviService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 

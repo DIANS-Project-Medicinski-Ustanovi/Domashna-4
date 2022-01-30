@@ -2,7 +2,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,205 +33,16 @@
     <script src="//unpkg.com/leaflet-gesture-handling"></script>
     <!--    Style for map END-->
 
+    <!--    AJAX SCRIPT START-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--    AJAX SCRIPT END-->
+
+
     <script type="text/javascript">
         function zoom() {
             document.body.style.zoom = "75%"
         }
-
     </script>
-
-    <style>
-
-        html {
-            box-sizing: border-box;
-        }
-
-        *, *:before, *:after {
-            box-sizing: inherit;
-        }
-
-        .column {
-            float: left;
-            width: 33.3%;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
-
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 8px;
-        }
-
-        .about-section {
-            padding: 50px;
-            text-align: center;
-            background-color: rgb(78,115,223);
-            color: white;
-        }
-
-        .container {
-            padding: 0 16px;
-        }
-
-        .container::after, .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        .title {
-            color: grey;
-        }
-
-        .button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: rgb(78,115,223);
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .button:hover {
-            background-color: rgba(78,115,223, 0.4);;
-        }
-
-        @media screen and (max-width: 650px) {
-            .column {
-                width: 100%;
-                display: block;
-            }
-        #header > th{
-            transition: transform .7s;
-            margin: 0 auto;
-        }
-        #header > th:hover{
-            background-color: ghostwhite;
-            font-size: 115%;
-            color: #3b5998;
-            transform: scale(1.06);
-            border-radius: 5px;
-            border: 2px solid #3b5998  ;
-            margin-left: 1px;
-        }
-
-        #body_rows > th:hover{
-            padding-top: -7px;
-            background-color: ghostwhite;
-            font-size: 115%;
-            color: #3b5998;
-        }
-            .button {
-                background-color: rgba(78, 115, 223, .8);
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                cursor: pointer;
-            }
-            .button:hover {
-                background-color: rgb(78, 115, 223);
-            }
-            .sidebar{
-                min-height: 135vh;
-            }
-
-
-            input{
-                background-color: rgba(78, 115, 223, .8);
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            input:hover {
-                background-color: rgb(78, 115, 223);
-
-            }
-
-            select {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                -ms-appearance: none;
-                appearance: none;
-                background: transparent;
-                font-size: 25px;
-                border: none;
-                margin-left: 20px;
-                text-align: center;
-                font-size: 25px;
-            }
-
-            .select {
-                display: inline-block;
-                width: 20em;
-                height: 3.3em;
-                background: transparent;
-                border-radius: 10px;
-                text-align: left;
-                border: none;
-            }
-
-            select {
-                margin-top: 30px;
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                color: rgba(78,115,223, 0.8);
-                font-size: 19px;
-                cursor: pointer;
-                padding: 5px;
-                border: none;
-            }
-            select::after{
-                font-size: 26px;
-            }
-
-            select::-ms-expand {
-                display: none;
-            }
-
-            .select::after {
-                top: 2px;
-                right: 0;
-                bottom: 0;
-                padding: 0 1em;
-                pointer-events: none;
-                background-color: transparent;
-
-                font-size: 26px;
-            }
-            .select:hover{
-                border: 3px solid rgb(78,115,223) ;
-            }
-
-            .select:hover::after {
-                color: lightgray;
-                background-color: whitesmoke;
-                border: none;
-                font-size: 26px;
-            }
-
-            /*<!-- For different browsers --> */
-            .select::after {
-                -webkit-transition: .25s all ease;
-                -o-transition: .25s all ease;
-                transition: .25s all ease;
-            }
-
-    </style>
-
 </head>
 
 <body id="page-top"  onload="zoom()">

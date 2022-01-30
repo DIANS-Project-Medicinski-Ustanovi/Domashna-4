@@ -1,4 +1,30 @@
+<style>
+    #header > th{
+        transition: transform .7s;
+        margin: 0 auto;
+    }
+    #header > th:hover{
+        background-color: ghostwhite;
+        font-size: 115%;
+        color: #3b5998;
+        transform: scale(1.06);
+        border-radius: 5px;
+        border: 2px solid #3b5998;
+        margin-left: 1px;
+    }
+
+    #body_rows > th:hover{
+        background-color: ghostwhite;
+        font-size: 115%;
+        color: #3b5998;
+    }
+    tbody tr:hover{
+        background-color: whitesmoke;
+    }
+
+</style>
 <th:block xmlns:th="http://www.thymeleaf.org">
+
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">  Табели</h1>
 
@@ -26,7 +52,7 @@
 
                                 <tr th:each="ustanova: ${Covid19TestingUstanovi}" id="body_rows">
                                     <th style="text-align: center">
-                                        <a th:href="@{'/{id}' (id=${ustanova.getMedicinska_ustanova_ID()})}" style="color: cornflowerblue; text-align: center; text-decoration: none">
+                                        <a th:href="@{'/{id}' (id=${ustanova.getMedicinska_ustanova_ID()})}" role="button" style="color: cornflowerblue; text-align: center; text-decoration: none">
                                                     <span th:text="${ustanova.getNaziv()}" style="text-align: center; width: 250px; font-weight: bold">
                                                         Назив
                                                     </span>

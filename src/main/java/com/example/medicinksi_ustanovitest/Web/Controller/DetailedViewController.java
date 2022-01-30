@@ -1,4 +1,4 @@
-package com.example.medicinksi_ustanovitest.Web.Servlet;
+package com.example.medicinksi_ustanovitest.Web.Controller;
 
 
 import com.example.medicinksi_ustanovitest.Service.Medicinski_UstanoviService;
@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,7 +23,8 @@ public class DetailedViewController  {
     @GetMapping("/{id}")
     public String getDetailedView(Model model, @PathVariable int id) {
         model.addAttribute("DetailedViewLab", medicinski_ustanoviService.findById(id));
-        return "Detailed View LAB";
+        model.addAttribute("bodyContent", "Detailed View LAB");
+        return "master-template";
     }
 
     @PostMapping("/{id}")
@@ -46,8 +46,8 @@ public class DetailedViewController  {
         }
 
         model.addAttribute("DetailedViewLab", medicinski_ustanoviService.findById(id));
-
-        return "Detailed View LAB";
+        model.addAttribute("bodyContent", "Detailed View LAB");
+        return "master-template";
     }
 
 }

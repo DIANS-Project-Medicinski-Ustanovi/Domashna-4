@@ -1,4 +1,4 @@
-package com.example.medicinksi_ustanovitest.Web.Servlet;
+package com.example.medicinksi_ustanovitest.Web.Controller;
 
 import com.example.medicinksi_ustanovitest.Service.Medicinski_UstanoviService;
 import org.springframework.stereotype.Controller;

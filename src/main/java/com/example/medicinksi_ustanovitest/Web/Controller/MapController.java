@@ -1,4 +1,4 @@
-package com.example.medicinksi_ustanovitest.Web.Servlet;
+package com.example.medicinksi_ustanovitest.Web.Controller;
 
 import com.example.medicinksi_ustanovitest.Service.Medicinski_UstanoviService;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,8 @@ public class MapController{
         model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
         model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
         model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(null,null,null));
-        return "Map View";
+        model.addAttribute("bodyContent", "Map View");
+        return "master-template";
 
     }
 
@@ -41,7 +42,7 @@ public class MapController{
         model.addAttribute("allCities", medicinski_ustanoviService.getAllCities());
         model.addAttribute("allCategories", medicinski_ustanoviService.getAllCategories());
         model.addAttribute("medicinski", medicinski_ustanoviService.FilterdMedUstanovi(category, city, covidTest));
-
-        return "Map View";
+        model.addAttribute("bodyContent", "Map View");
+        return "master-template";
     }
 }

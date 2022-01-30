@@ -1,4 +1,4 @@
-package com.example.medicinksi_ustanovitest.Web.Servlet;
+package com.example.medicinksi_ustanovitest.Web.Controller;
 
 
 import ch.qos.logback.core.layout.EchoLayout;
