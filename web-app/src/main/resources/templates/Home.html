@@ -1,0 +1,152 @@
+
+<style>
+    .sidebar{
+        min-height: 150vh;
+    }
+</style>
+
+<th:block xmlns:th="http://www.thymeleaf.org">
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Вкупно
+                                                <br>
+                                                медицински установи</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"  th:text="${countAllMedicalLabs}"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Вкупно лаборатории за Ковид - 19 тестирање</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" th:text="${countAllCovidLabs}"></div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Број на различни општини/градови со медицински установи
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">29</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Различни категории на медицински установи
+                                            </div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+
+                        <!-- Area Chart -->
+
+                            <div class="card shadow mb-4" style="width: 49.5%; display: inline-block; margin-right: 9px">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"> Go - LAB </h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <p style="font-size: 1.2em; text-align: justify">
+                                            <b>Добредојдовте на Go-Lab,</b> <br>
+                                            <br>
+                                            Тука може да ги најдете сите медицински установи во Македонија.<br>
+                                            Пронајдете ја најблиската и најдобрата установа за КОВИД-19 тестирање и други ваши потреби во само неколку чекори.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4" style="width: 49.5%;  display: inline-block">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary"> Info </h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-area">
+                                        <p style="font-size: 1.6em; text-align: justify">
+                                            <ul style="list-style: square; text-align: justify">
+                                             <li><b>Home:</b> Тука може да ги погледнете различните
+                                                    извештаи за прикажаните медицински установи како и да се
+                                                    инфоримаре и запознаете со креираната веб апликација
+                                             </li>
+                                            <li><b>Map:</b> Погледнете ги сите медицинки установи во РСМ прикажани на мапа,
+                                            заедно со овозможената функционалност за филтер по категорија, град и ковид-19 тест
+                                            </li>
+                                            <li><b>All Medical Centers:</b> Табеларен приказ на сите медицински установи кои се прикажани на
+                                                Go - LAB со брз пристап до деталниот поглед на секој од нив
+                                            </li>
+                                            <li><b>Covid - 19 Testing Ceters:</b> Табеларен приказ на сите установи во кои
+                                                се нуди Ковид - 19 тестирање кои се прикажани на
+                                                Go - LAB со брз пристап до деталниот поглед на секој од нив
+                                            </li>
+                                            <li><b>About Us:</b> Членови на тимот во процесот на креирање на Go - LAB апликацијата
+                                            </li>
+                                            </ul>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                 </div>
+                            </div>
+</th:block>
