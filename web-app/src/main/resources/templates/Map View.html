@@ -251,7 +251,7 @@
         const temp_kat = kat.split(',');
 
         for (var i = 1; i < temp_long.length; i++) {
-            var link_detailedView = "https://go-lab.herokuapp.com/" + temp_med_id[i];
+            var link_detailedView = "https://go-labs.herokuapp.com/" + temp_med_id[i];
             marker = L.marker([temp_lat[i], temp_long[i]]).addTo(map)
                 .bindPopup('<span style="text-align: center">' + '<hr>' +
                     '<h5> <b style="color: #3b5998">Име:</b> ' + temp_naziv[i] + '</h5>' +
