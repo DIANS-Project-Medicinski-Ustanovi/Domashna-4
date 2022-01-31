@@ -1,0 +1,47 @@
+server:
+  port: 9093
+
+
+spring:
+  application:
+    name: API-GATEWAY
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: GO-LAB-USER-SERVICE
+#          uri: lb://GO-LAB-USER-SERVICE
+#          predicates:
+#           - Path=/users/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: GO-LAB-USER-SERVICE
+#                fallbackurl: forward:/userServiceFallBack
+#        - id: GO-LAB-MED-SERVICE
+#          uri: lb://GO-LAB-MED-SERVICE
+#          predicates:
+#            - Path=/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: GO-LAB-MED-SERVICE
+#                fallbackurl: forward:/MedicinskaUstanovaServiceFallBack
+
+
+management:
+#  endpoint:
+#    gateway:
+#      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "gateway"
+
+#eureka:
+#  instance:
+#    hostname: localhost
+
+
+
+
+
